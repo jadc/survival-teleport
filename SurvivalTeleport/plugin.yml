@@ -1,0 +1,7 @@
+ name: SurvivalTeleport
+ version: 1.0.0
+ description: Essentials-type teleportation with immersion.
+ author: jadc
+ main: me.jadc.survivalteleport.st
+ 
+ commands:
