@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class st extends JavaPlugin {
 	
 	public static st instance;
+	public static String name = "Ender Location Proxy";
 	
 	@Override
 	public void onEnable() {

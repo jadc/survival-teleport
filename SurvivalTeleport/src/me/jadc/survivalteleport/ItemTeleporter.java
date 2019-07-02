@@ -14,7 +14,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class ItemTeleporter implements Listener {
 	
-	private String name = ChatColor.GOLD + "Ender Location Proxy";
+	private String name = ChatColor.GOLD + st.name;
 	
 	public ItemTeleporter() { }
 	
@@ -39,7 +39,7 @@ public class ItemTeleporter implements Listener {
 		if(e.getItem().getItemMeta().getDisplayName() == null) return;
 		if(e.getItem().getItemMeta().getDisplayName().equals(getItem().getItemMeta().getDisplayName())) {
 			e.setCancelled(true);
-			InterfaceTeleporter.open(e.getPlayer());
+			new InterfaceTeleporter(e.getPlayer());
 		}
 	}
 }
