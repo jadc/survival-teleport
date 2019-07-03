@@ -14,15 +14,16 @@ import net.md_5.bungee.api.ChatColor;
 
 public class ItemTeleporter implements Listener {
 	
-	private String name = ChatColor.GOLD + st.name;
+	private String name = ChatColor.AQUA + st.name;
+	private Material material = Material.ENDER_PEARL;
 	
 	public ItemTeleporter() { }
 	
 	public ItemStack getItem() {
-		ItemStack tp = new ItemStack(Material.ENDER_PEARL);
+		ItemStack tp = new ItemStack(material);
 		ItemMeta meta = tp.getItemMeta();
 		meta.setDisplayName(name);
-		meta.addEnchant(Enchantment.KNOCKBACK, 1, false);
+		meta.addEnchant(Enchantment.DURABILITY, (int)(Math.random() * 1000), true);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		tp.setItemMeta(meta);
 		return tp;
@@ -30,16 +31,17 @@ public class ItemTeleporter implements Listener {
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e) {
-		if(e.getAction() != Action.RIGHT_CLICK_AIR || e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-		if(e.getItem() == null) return;
-		if(!e.getItem().getType().equals(getItem().getType())) return;
-		if(!e.getItem().hasItemMeta()) return;
-		if(e.getItem().getItemMeta() == null) return;
-		if(!e.getItem().getItemMeta().hasDisplayName()) return;
-		if(e.getItem().getItemMeta().getDisplayName() == null) return;
-		if(e.getItem().getItemMeta().getDisplayName().equals(getItem().getItemMeta().getDisplayName())) {
-			e.setCancelled(true);
-			new InterfaceTeleporter(e.getPlayer());
+		if(e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+			if(e.getItem() == null) return;
+			if(!e.getItem().getType().equals(material)) return;
+			if(!e.getItem().hasItemMeta()) return;
+			if(e.getItem().getItemMeta() == null) return;
+			if(!e.getItem().getItemMeta().hasDisplayName()) return;
+			if(e.getItem().getItemMeta().getDisplayName() == null) return;
+			if(e.getItem().getItemMeta().getDisplayName().equals(name)) {
+				e.setCancelled(true);
+				new InterfaceTeleporter(e.getPlayer());
+			}
 		}
 	}
 }

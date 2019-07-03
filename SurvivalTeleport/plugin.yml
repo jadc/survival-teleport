@@ -3,5 +3,6 @@
  description: Essentials-type teleportation with immersion.
  author: jadc
  main: me.jadc.survivalteleport.st
+ api-version: 1.14
  
  commands:

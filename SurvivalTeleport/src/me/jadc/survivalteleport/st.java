@@ -13,6 +13,7 @@ public class st extends JavaPlugin {
 		instance = this;
 		
 		Bukkit.getPluginManager().registerEvents(new ItemTeleporter(), this);
+		Bukkit.getPluginManager().registerEvents(new InterfaceTeleporter(), this);
 		RecipeTeleporter.register();
 	}
 	
